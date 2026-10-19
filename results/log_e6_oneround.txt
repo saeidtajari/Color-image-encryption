@@ -1,0 +1,20 @@
+{
+ "mean_obs": 99.67070198059082,
+ "mean_pred": 99.8066535760959,
+ "rmse_pts": 2.842057400276536,
+ "corr": 0.025247942685759875,
+ "ideal_random": 99.609375,
+ "low_third_obs": 99.62035463464956,
+ "low_third_pred": 99.67331812108728,
+ "high_third_obs": 99.75869734617237,
+ "high_third_pred": 99.93458844096803,
+ "ntrials": 4000,
+ "min_obs": 1.9704182942708333,
+ "max_obs": 100.0,
+ "healed_fraction": 0.001,
+ "healed_expected": 0.00390625,
+ "mean_obs_not_healed": 99.74558591285783,
+ "mean_pred_not_healed": 99.8065576494277,
+ "mean_unchanged_prefix_healed": 0.7513834635416666,
+ "n_healed": 4
+}

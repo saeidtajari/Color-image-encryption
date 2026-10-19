@@ -1,0 +1,57 @@
+{
+ "W": {
+  "stats": {
+   "entropy": 7.999058408040444,
+   "mean_abs_corr": 0.003118738092213335,
+   "chi_pass": 11,
+   "local_entropy": 7.90321200872408
+  },
+  "diff_standard": {
+   "npcr": 98.66179911295573,
+   "uaci": 33.32948945488784,
+   "npcr_min": 98.24981689453125,
+   "npcr_pass": 0.0,
+   "uaci_pass": 0.69
+  },
+  "diff_fixed": {
+   "npcr": 0.0005086263020833334,
+   "uaci": 6.921306934232025e-06,
+   "npcr_min": 0.0,
+   "npcr_pass": 0.0,
+   "uaci_pass": 0.0
+  },
+  "structure": {
+   "diff_match": 0.9999966634114583,
+   "zero_frac": 0.9999949137369791
+  },
+  "additivity": 0.1390032450358073,
+  "x0_distinct_values_of_2000_random_images": 252
+ },
+ "P": {
+  "stats": {
+   "entropy": 7.999123004129226,
+   "mean_abs_corr": 0.00268711886043085,
+   "chi_pass": 12,
+   "local_entropy": 7.9019918595075485
+  },
+  "diff_standard": {
+   "npcr": 99.60495503743489,
+   "uaci": 33.44783554576574,
+   "npcr_min": 99.53460693359375,
+   "npcr_pass": 0.92,
+   "uaci_pass": 0.9566666666666667
+  },
+  "diff_fixed": {
+   "npcr": 99.61064147949219,
+   "uaci": 33.45287692999522,
+   "npcr_min": 99.530029296875,
+   "npcr_pass": 0.9733333333333334,
+   "uaci_pass": 0.95
+  },
+  "structure": {
+   "diff_match": 0.003911604139539931,
+   "zero_frac": 0.003901519775390625
+  },
+  "additivity": 0.0039398193359375
+ }
+}

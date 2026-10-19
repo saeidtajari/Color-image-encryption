@@ -1,0 +1,31 @@
+digraph G {
+  rankdir=TB; nodesep=0.35; ranksep=0.32; fontname="Times"; compound=true;
+  node [shape=box, style="rounded,filled", fillcolor="#F4F6F8", color="#44546A", fontname="Times", fontsize=11, margin="0.14,0.07"];
+  edge [color="#44546A", fontname="Times", fontsize=10, arrowsize=0.7];
+  P [label="Plain image P (M×N×3; grey: M×N, 8 or 16 bit)"];
+  K [label="Secret key K = (x₀, y₀, z₀, γ, r, μ)"];
+  H [label="Digest H = SHA-256(M ‖ N ‖ f ‖ P)"];
+  N [label="Random nonce n (128 bit)"];
+  E [label="E = HKDF(salt n, IKM H, \"init\", 24 bytes)"];
+  S [label="Split into byte planes (R₁, G₁, B₁)\n(sequences of length L = M·N)"];
+  I [label="Initial values\nx₀′ = x₀ + u₁, y₀′ = y₀ + u₂, z₀′ = z₀ + u₃ (mod 1)"];
+  G [label="Hybrid 3D chaotic map\n(first 1000 iterations discarded)"];
+  F [label="Output filter and quantization, Eq. (10)\nq = ⌊10¹⁴ g(s)⌋,  gₓ = (x + y·z) mod 1, …"];
+  KS [label="Kₛ = HKDF(n, K, \"stream\" ‖ H, 32 bytes)", fillcolor="#E8F0E4"];
+  W [label="Cryptographic anchor, Eq. (11)\nq′ = q ⊕ w,  w: 47-bit words of ChaCha20(Kₛ, round t)", fillcolor="#E8F0E4"];
+  KM [label="Key material of round t\n(transfer functions, DNA rules, key bytes, S-boxes)", fillcolor="#E8F0E4"];
+  subgraph cluster_r { label="Round t = 1, 2, 3, 4"; labeljust=l; fontname="Times"; fontsize=11; color="#8497B0"; style="dashed";
+    C1 [label="Confusion\npermute pixels with TP₁, TP₂, TP₃", fillcolor="#FBE9E1"];
+    D1 [label="Diffusion, forward pass\nDNA addition + chained S-box", fillcolor="#E1ECF7"];
+    D2 [label="Diffusion, backward pass\nDNA addition + chained S-box", fillcolor="#E1ECF7"];
+    C3 [label="Cipher\nXOR with key bytes K₁, K₂, K₃", fillcolor="#FFF2CC"];
+    C1 -> D1 -> D2 -> C3;
+  }
+  O [label="Cipher image C (same size and format as P)"];
+  M [label="Masked digest H* = H ⊕ HKDF(n, K, \"mask\", 32 bytes)"];
+  T [label="Tag = HMAC-SHA-256(K_mac, n ‖ H* ‖ M ‖ N ‖ f ‖ C),\nK_mac = HKDF(n, K, \"mac\", 32 bytes)", fillcolor="#E8F0E4"];
+  P -> H; P -> S; K -> I; H -> E; N -> E [label="salt"]; E -> I [label="u₁,u₂,u₃"]; I -> G -> F -> W -> KM; K -> KS; H -> KS; KS -> W;
+  S -> C1; KM -> C1 [style=dashed]; KM -> D1 [style=dashed]; KM -> D2 [style=dashed, constraint=false]; KM -> C3 [style=dashed, constraint=false];
+  C3 -> C1 [label="t < 4", constraint=false];
+  C3 -> O [label="t = 4"]; H -> M [constraint=false]; N -> M [style=invis]; O -> T [style=dashed]; M -> T [style=dashed];
+}

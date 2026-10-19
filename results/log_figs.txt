@@ -1,0 +1,8 @@
+The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+/home/claude/work/pkg/code/figsi_color.py:83: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  plt.tight_layout(rect=(0,.04,1,1)); plt.savefig('figsi/fig_phase.png'); plt.close()
+The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
+ok

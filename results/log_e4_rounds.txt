@@ -1,0 +1,5 @@
+1 0.003906673855251736 {'first': 99.802, 'quarter': 99.812, 'middle': 99.808, 'three_quarter': 99.788, 'last': 99.784}
+2 0.003906389024522569 {'first': 99.613, 'quarter': 99.611, 'middle': 99.609, 'three_quarter': 99.61, 'last': 99.605}
+3 0.003910959879557292 {'first': 99.607, 'quarter': 99.61, 'middle': 99.606, 'three_quarter': 99.606, 'last': 99.605}
+4 0.003911014133029514 {'first': 99.605, 'quarter': 99.606, 'middle': 99.613, 'three_quarter': 99.613, 'last': 99.607}
+5 0.00390545654296875 {'first': 99.607, 'quarter': 99.611, 'middle': 99.61, 'three_quarter': 99.616, 'last': 99.607}

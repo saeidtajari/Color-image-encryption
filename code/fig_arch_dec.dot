@@ -1,0 +1,25 @@
+digraph G {
+  rankdir=TB; nodesep=0.35; ranksep=0.32; fontname="Times"; compound=true;
+  node [shape=box, style="rounded,filled", fillcolor="#F4F6F8", color="#44546A", fontname="Times", fontsize=11, margin="0.14,0.07"];
+  edge [color="#44546A", fontname="Times", fontsize=10, arrowsize=0.7];
+  C [label="Cipher image C"];
+  M [label="Masked digest H*, nonce n, tag"];
+  T [label="Verify tag:\nHMAC-SHA-256(K_mac, n ‖ H* ‖ M ‖ N ‖ f ‖ C),\nK_mac = HKDF(n, K, \"mac\", 32 bytes)", fillcolor="#E8F0E4"];
+  K [label="Secret key K"];
+  H [label="H = H* ⊕ HKDF(n, K, \"mask\", 32 bytes)"];
+  I [label="Initial values (x₀′, y₀′, z₀′) from K and\nE = HKDF(salt n, IKM H, \"init\", 24 bytes)"];
+  G [label="Hybrid 3D chaotic map, output filter (Eq. (10))\nand anchor with Kₛ = HKDF(n, K, \"stream\" ‖ H, 32 bytes) (Eq. (11)):\nkey material of rounds 1, 2, 3, 4", fillcolor="#E8F0E4"];
+  subgraph cluster_r { label="Round t = 4, 3, 2, 1"; labeljust=l; fontname="Times"; fontsize=11; color="#8497B0"; style="dashed";
+    C3 [label="Cipher⁻¹\nXOR with key bytes K₁, K₂, K₃", fillcolor="#FFF2CC"];
+    D2 [label="Diffusion⁻¹, backward pass\nS-box⁻¹, subtract previous cipher value,\nDNA subtraction", fillcolor="#E1ECF7"];
+    D1 [label="Diffusion⁻¹, forward pass\nS-box⁻¹, subtract previous cipher value,\nDNA subtraction", fillcolor="#E1ECF7"];
+    C1 [label="Confusion⁻¹\nundo the permutations TP₁, TP₂, TP₃", fillcolor="#FBE9E1"];
+    C3 -> D2 -> D1 -> C1;
+  }
+  P [label="Recovered image P′"];
+  V [label="Integrity check:\nSHA-256(M ‖ N ‖ f ‖ P′) = H ?", fillcolor="#E8F0E4"];
+  M -> T; K -> T; T -> H [label="accept"]; K -> H; K -> I; H -> I; I -> G; K -> G [style=dotted];
+  C -> T [style=dashed]; C -> C3; G -> C3 [style=dashed]; G -> D2 [style=dashed]; G -> C1 [style=dashed, constraint=false];
+  C1 -> C3 [label="t > 1", constraint=false];
+  C1 -> P [label="t = 1"]; P -> V; H -> V [constraint=false];
+}

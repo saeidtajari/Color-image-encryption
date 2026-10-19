@@ -1,0 +1,43 @@
+{
+ "numba_vs_python_bit_equal": true,
+ "gcc -O2 -ffp-contract=off": {
+  "polynomial sine (proposed)": {
+   "bit_equal": true,
+   "first_divergence": null
+  },
+  "libm sin (conventional)": {
+   "bit_equal": false,
+   "first_divergence": 12
+  }
+ },
+ "gcc -O3 -march=native (FMA contraction on)": {
+  "polynomial sine (proposed)": {
+   "bit_equal": false,
+   "first_divergence": 5
+  },
+  "libm sin (conventional)": {
+   "bit_equal": false,
+   "first_divergence": 5
+  }
+ },
+ "clang -O2": {
+  "polynomial sine (proposed)": {
+   "bit_equal": true,
+   "first_divergence": null
+  },
+  "libm sin (conventional)": {
+   "bit_equal": false,
+   "first_divergence": 12
+  }
+ },
+ "gcc -O3 -ffast-math": {
+  "polynomial sine (proposed)": {
+   "bit_equal": false,
+   "first_divergence": 8
+  },
+  "libm sin (conventional)": {
+   "bit_equal": false,
+   "first_divergence": 12
+  }
+ }
+}

@@ -1,0 +1,11 @@
+{
+ "Arnold coupling of Logistic maps, gamma in [3.7,4)": {
+  "frac_pos": 1.0,
+  "min": 2.5544825437566616
+ },
+ "Hybrid branches without coupling, random (gamma,r,mu) in the key ranges (Lyapunov exponent of the combined 3D map)": {
+  "frac_pos": 0.9346666666666666,
+  "min": -2.826360544392845,
+  "median": 0.4549931815719992
+ }
+}

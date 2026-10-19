@@ -1,0 +1,51 @@
+50 images
+Lena 6
+Baboon 12
+Peppers 18
+Fruits 23
+astronaut 29
+camera 35
+coffee 41
+chelsea 47
+rocket 53
+brick 58
+grass 63
+gravel 68
+retina 74
+hubble_deep_field 79
+immunohistochemistry 84
+colorwheel 89
+text 95
+moon 100
+page 106
+horse 111
+clock 117
+coins 122
+cell 127
+checkerboard 134
+logo 141
+Lena_64 141
+Baboon_64 141
+astronaut_64 142
+Lena_128 143
+Baboon_128 144
+astronaut_128 146
+coffee_128 147
+Peppers_512 185
+Baboon_512 220
+Fruits_512 256
+astronaut_512 293
+rocket_512 330
+coffee_512 365
+colorwheel_512 394
+retina_1024 535
+hubble_deep_field_1024 691
+all black 697
+all white 703
+constant colour 710
+uniform noise 716
+horizontal gradient 723
+vertical stripes 729
+binary random 736
+single white pixel 743
+rendered text 749
